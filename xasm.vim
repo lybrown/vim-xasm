@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: xasm
 " Maintainer: Lyren Brown <lyren.brown@gmail.com>
-" $Id: $
+" $Id$
 
 syn match xasmWord "\h\w*" " Prevent Number from matching inside word
 
