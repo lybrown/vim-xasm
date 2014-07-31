@@ -1,28 +1,24 @@
 " Vim syntax file
 " Language: xasm
-" Maintainer: Lyren Brown <lyren.brown@gmail.com>
-" $Id$
+" Maintainer: http://atariage.com/forums/user/21021-xuel/
 
 syn match xasmWord "\h\w*" " Prevent Number from matching inside word
 
-syn match xasmPreProc "\<\(equ\|icl\|ini\|ins\|run\|org\|dta\|opt\|ift\|eli\|els\|eif\|ert\)\>"
+syn match xasmOpCode "\c\<\(ADC\|AND\|ASL\|BCC\|BCS\|BEQ\|BIT\|BMI\|BNE\|BPL\)\>"
+syn match xasmOpCode "\c\<\(BRK\|BVC\|BVS\|CLC\|CLD\|CLI\|CLV\|CMP\|CPX\|CPY\)\>"
+syn match xasmOpCode "\c\<\(DEC\|DEX\|DEY\|EOR\|INC\|INX\|INY\|JMP\|JSR\|LDA\)\>"
+syn match xasmOpCode "\c\<\(LDX\|LDY\|LSR\|NOP\|ORA\|PHA\|PHP\|PLA\|PLP\|ROL\)\>"
+syn match xasmOpCode "\c\<\(ROR\|RTI\|RTS\|SBC\|SEC\|SED\|SEI\|STA\|STX\|STY\)\>"
+syn match xasmOpCode "\c\<\(TAX\|TAY\|TSX\|TXA\|TXS\|TYA\)\>"
 
-syn match xasmOpcode "\<\(adc\|anc\|and\|asl\|asr\|atx\|bcc\|bcs\|beq\|bit\|bmi\|bne\)\>"
-syn match xasmOpcode "\<\(bpl\|brk\|bvc\|bvs\|clc\|cld\|cli\|clv\|cmp\|cpx\|cpy\|dcp\)\>"
-syn match xasmOpcode "\<\(dec\|dex\|dey\|dop\|eor\|hle\|inc\|inx\|iny\|isb\|jmp\|jsr\)\>"
-syn match xasmOpcode "\<\(las\|lax\|lda\|ldx\|ldy\|lsr\|nop\|ora\|pha\|php\|pla\|plp\)\>"
-syn match xasmOpcode "\<\(rla\|rol\|ror\|rra\|rti\|rts\|sax\|sbc\|sbx\|sec\|sed\|sei\)\>"
-syn match xasmOpcode "\<\(sha\|shx\|shy\|slo\|sre\|sta\|stx\|sty\|tax\|tay\|tsx\|txa\)\>"
-syn match xasmOpcode "\<\(txs\|tya\|xaa\|xas\|bra\|tsb\|rmb\|bbr\|trb\|stz\|smb\|bbs\)\>"
-syn match xasmOpcode "\<\(wai\|stp\|plx\|ply\|phx\|phy\)\>"
+syn match xasmVirtOp "\c\<\(ADD\|INW\|JCC\|JCS\|JEQ\|JMI\|JNE\|JPL\|JVC\|JVS\)\>"
+syn match xasmVirtOp "\c\<\(MVA\|MVX\|MVY\|MWA\|MWX\|MWY\|RCC\|RCS\|REQ\|RMI\)\>"
+syn match xasmVirtOp "\c\<\(RNE\|RPL\|RVC\|RVS\|SCC\|SCS\|SEQ\|SMI\|SNE\|SPL\)\>"
+syn match xasmVirtOp "\c\<\(SUB\|SVC\|SVS\)\>"
 
-syn match xasmVirtOp "\<\(mva\|mvx\|mvy\|mwa\|mwx\|mwy\)\>"
-syn match xasmVirtOp "\<\(rcc\|rcs\|req\|rmi\|rne\|rpl\)\>"
-syn match xasmVirtOp "\<\(scc\|scs\|seq\|smi\|sne\|spl\)\>"
-syn match xasmVirtOp "\<\(jcc\|jcs\|jeq\|jmi\|jne\|jpl\)\>"
-syn match xasmVirtOp "\<\(add\|sub\|end\|inw\)\>"
+syn match xasmPreProc "\c\<\(DTA\|EIF\|ELI\|ELS\|END\|EQU\|ERT\|ICL\|IFT\|INI\)\>"
+syn match xasmPreProc "\c\<\(INS\|OPT\|ORG\|RUN\)\>"
 
-syn region xasmCComment start="/\*" end="\*/"
 syn match xasmComment ";.*"
 syn match xasmNumber "[0-9]\+"
 syn match xasmHexNumber "$[0-9a-fA-F]\+"
@@ -30,12 +26,9 @@ syn match xasmLabel "^\h\w*"
 syn match xasmTrailingSpace " \+$"
 syn match xasmOperator "a(\|[-<>#@+*/()]"
 syn match xasmRepeat ":[0-9]\+"
-syn match xasmPerl "^ *>>>.*"
 syn region xasmString start=/[cd]\?'/ end=/'/
 syn region xasmString start=/[cd]\?"/ end=/"/
-syn region xasmInterp start=/<<</ end=/>>>/
 
-hi def link xasmCComment Comment
 hi def link xasmComment Comment
 hi def link xasmNumber Number
 hi def link xasmHexNumber Number
@@ -47,5 +40,3 @@ hi def link xasmPreProc PreProc
 hi def link xasmOperator PreProc
 hi def link xasmRepeat PreProc
 hi def link xasmString String
-hi def link xasmPerl Type
-hi def link xasmInterp Type
